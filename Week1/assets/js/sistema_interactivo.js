@@ -16,17 +16,3 @@ function validadorNumero() {//Esta funcion esta creada para validar la edad
 }
 
 validadorNumero();
-
-
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------
-//(edad != "")?alert("Hola si es una edad"):alert("Ingrese una edad valida") //ESTO ES UN CONDICIONAL TAMBIEN
-// let Confirmar = confirm("¿Desea continuar?")/*El "confirm" sirve para pedir una confirmacion en js, devuelve un valor booleano (true o false) dependiendo de la respuesta del usuario*/
-// if (Confirmar) {
-//     alert("Hola" + " " + nombre + " " + "¡Gracias por continuar!")/*El "alert" sirve para mostrar un mensaje en js*/
-// }
-// else {
-//     alert("Hola" + " " + nombre + " " + "¡Gracias por su visita!")
-//     window.close()/*El "window.close()" sirve para cerrar la ventana del navegador, pero solo funciona si la ventana fue abierta por un script, no funcionará si el usuario abrió la página directamente*/
-// }
