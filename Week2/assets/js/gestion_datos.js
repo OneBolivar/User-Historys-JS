@@ -50,7 +50,7 @@ console.log("---------------------------------------------")
 //for each
 mapCategorias.forEach((value , key)=> console.log(key, value))//For each para recorrer los objetos guardados
 
-//TASK 5(Empezando)
+//TASK 5(Completado)
 let validador = true; //Validador para que funcione como un while true 
 function validacionProductos() {
   listaProductos.forEach((productos)=>{
