@@ -13,6 +13,7 @@ function validadorNumero() {//Esta funcion esta creada para validar la edad
     (edad < 18)//Validacion ternaria
         ? alert("Hola " + nombre + ", eres menor de edad. ¡Sigue aprendiendo y disfrutando del código!")
         : alert("Hola " + nombre + ", eres mayor de edad. ¡Prepárate para grandes oportunidades en el mundo de la programación!!");
-}
+
+    }
 
 validadorNumero();

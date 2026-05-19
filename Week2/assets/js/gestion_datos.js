@@ -3,10 +3,10 @@ const listaProductos = [
   // Objeto creado para almacenar los productos 
   {categoria: "Comida",id: 101,nombre: "Salchicha",precio: 2000},
   {categoria: "Comida",id: 102,nombre: "Lenteja",precio: 1000},
-   {categoria: "Comida",id: "",nombre: "atun",precio: 1000},
+   {categoria: "Comida",id: "",nombre: "atun",precio: ""},
 ];
-listaProductos.push({categoria: "Dispositivo",id: 103,nombre: "Telefono",precio: 500000});
-listaProductos.push({categoria: "Vehiculo",id: 104, nombre: "Moto", precio: 7500000})
+listaProductos.push({categoria: "Dispositivo",id: 104,nombre: "Telefono",precio: 500000});
+listaProductos.push({categoria: "Vehiculo",id: 105, nombre: "Moto", precio: 7500000})
 console.table(listaProductos);
 console.log("---------------------------------------------")
 // //TASK 2 (Completada)
