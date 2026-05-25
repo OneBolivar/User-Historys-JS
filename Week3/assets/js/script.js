@@ -1,46 +1,90 @@
-// TASK 2: Selección e inspección
+// 1. CAPTURA DE ELEMENTOS DEL DOM (PASO 2)
 const inputNota = document.getElementById('inputNota');
 const btnAgregar = document.getElementById('btnAgregar');
-const listaNotas = document.querySelector('#listaNotas');
+const listaNotas = document.getElementById('listaNotas');
 
-// Loggeo en consola para confirmar existencia
-console.log("Elemento Input:", inputNota);
-console.log("Elemento Botón:", btnAgregar);
-console.log("Elemento Lista UL:", listaNotas);
+// Arreglo donde guardamos el texto de las notas en la memoria del programa
+let notas = [];
 
 
-// TASK 3: Agregar notas al DOM
+// 2. LOGICA VISUAL: AGREGAR Y ELIMINAR NOTAS (PASO 3 Y 4)
+
+// Escuchar el clic en el botón de agregar
 btnAgregar.addEventListener('click', function() {
     const textoNota = inputNota.value.trim();
 
-    // 1. Validación de input vacío
+    // Validar que no esté vacío
     if (textoNota === "") {
-        alert("Por favor, escribe algo. La nota no puede estar vacía.");
-        return; // Detiene la ejecución si está vacío
+        alert("Por favor, escribe algo.");
+        return; 
     }
 
-    // 2. Creación del elemento LI y su texto
-    const nuevoLi = document.createElement('li');
-    nuevoLi.textContent = textoNota + " "; // Agrega el texto de la nota
+    //  Guardar el texto en nuestro arreglo
+    notas.push(textoNota);
 
-    // 3. Creación del botón "Eliminar" integrado
-    const btnEliminar = document.createElement('button');
-    btnEliminar.textContent = "Eliminar";
-    
-    // Funcionalidad extra: eliminar la nota al hacer clic en su botón
-    btnEliminar.addEventListener('click', function() {
-        listaNotas.removeChild(nuevoLi);
-        console.log("Nota eliminada del DOM.");
-    });
+    //  Dibujar la nota en la pantalla
+    crearElementoNotaEnDOM(textoNota);
 
-    // 4. Insertar el botón dentro del LI, y el LI dentro de la UL
-    nuevoLi.appendChild(btnEliminar);
-    listaNotas.appendChild(nuevoLi);
+    //  DEJAR CONSTANCIA EN EL LOCAL STORAGE
+    guardarEnLocalStorage();
 
-    // 5. Limpieza y enfoque
+    // Limpiar el input
     inputNota.value = "";
     inputNota.focus();
-
-    // 6. Confirmación en consola
-    console.log(`Nota agregada con éxito: "${textoNota}"`);
 });
+
+// Función para crear la nota 
+function crearElementoNotaEnDOM(texto) {
+    const nuevoLi = document.createElement('li');
+    nuevoLi.textContent = texto;
+
+    const btnEliminar = document.createElement('button');
+    btnEliminar.textContent = 'Eliminar';
+    btnEliminar.className = 'btn-eliminar';
+
+    // Al hacer clic en eliminar...
+    btnEliminar.addEventListener('click', function() {
+        nuevoLi.remove(); // Borrar de la pantalla
+
+        // Sacar el texto borrado de nuestro arreglo de notas
+        notas = notas.filter(nota => nota !== texto);
+        
+        // ACTUALIZAR EL LOCAL STORAGE (YA NO EXISTE ESTA NOTA)
+        guardarEnLocalStorage();
+    });
+
+    nuevoLi.appendChild(btnEliminar);
+    listaNotas.appendChild(nuevoLi);
+}
+
+
+// 3. PERSISTENCIA: FUNCIONES DE LOCAL STORAGE (PASO 5)
+
+// Guarda la lista actual en el disco duro del navegador
+function guardarEnLocalStorage() {
+    // Convertimos el arreglo a un texto plano (JSON) y lo guardamos
+    localStorage.setItem('misNotas', JSON.stringify(notas));
+}
+
+// Recupera las notas guardadas cuando la página se abre por primera vez
+function cargarNotasDeLocalStorage() {
+    const notasGuardadas = localStorage.getItem('misNotas');
+    
+    // Si el navegador encuentra que guardamos algo antes...
+    if (notasGuardadas) {
+        // Convertimos ese texto de vuelta a un arreglo real
+        notas = JSON.parse(notasGuardadas);
+        
+        // Reconstruimos la lista en pantalla nota por nota
+        notas.forEach(function(textoNota) {
+            crearElementoNotaEnDOM(textoNota);
+        });
+    }
+}
+
+// AL ENTRAR A LA PÁGINA: Ejecutamos la carga automática
+cargarNotasDeLocalStorage();
+
+
+//value sirve para extraer el textpo de una caja de txt
+//trim sirve para quitar los espacios
