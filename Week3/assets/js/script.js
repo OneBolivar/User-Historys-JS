@@ -1,5 +1,5 @@
 // 1. CAPTURA DE ELEMENTOS DEL DOM (PASO 2)
-const inputNota = document.getElementById('inputNota');
+const inputNota = document.getElementById('inpu tNota');
 const btnAgregar = document.getElementById('btnAgregar');
 const listaNotas = document.getElementById('listaNotas');
 
@@ -7,7 +7,7 @@ const listaNotas = document.getElementById('listaNotas');
 let notas = [];
 
 
-// 2. LOGICA VISUAL: AGREGAR Y ELIMINAR NOTAS (PASO 3 Y 4)
+//LOGICA VISUAL: AGREGAR Y ELIMINAR NOTAS (PASO 3 Y 4)
 
 // Escuchar el clic en el botón de agregar
 btnAgregar.addEventListener('click', function() {
