@@ -1,0 +1,195 @@
+/* =========================================================================
+   ESTILOS GENERALES
+   ========================================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333333;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+h2 {
+    margin-top: 40px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* =========================================================================
+   CONTENEDOR DE MENSAJES (FEEDBACK DINÁMICO DOM)
+   ========================================================================= */
+#contenedor-mensaje {
+    width: 100%;
+    max-width: 460px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: none; /* Oculto por defecto, se activa con las clases de abajo */
+}
+
+/* Clases dinámicas aplicadas por JavaScript */
+#contenedor-mensaje.exito {
+    display: block;
+    background-color: #def7ec;
+    color: #03543f;
+    border: 1px solid #84e1bc;
+}
+
+#contenedor-mensaje.error {
+    display: block;
+    background-color: #fde8e8;
+    color: #9b1c1c;
+    border: 1px solid #f8b4b4;
+}
+
+/* =========================================================================
+   FORMULARIO DE CAPTURA
+   ========================================================================= */
+#formulario-producto {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 440px;
+}
+
+#formulario-producto div {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* =========================================================================
+   BOTONES
+   ========================================================================= */
+button {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Botón Guardar */
+#formulario-producto button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+#formulario-producto button[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Botón Sincronizar */
+#btn-sincronizar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #10b981;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+#btn-sincronizar:hover {
+    background-color: #059669;
+}
+
+/* =========================================================================
+   LISTA DE PRODUCTOS DINÁMICA
+   ========================================================================= */
+#lista-productos {
+    width: 100%;
+    max-width: 500px;
+    padding: 0;
+    margin: 20px 0 0 0;
+    list-style: none;
+}
+
+#lista-productos li {
+    background-color: #ffffff;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-left: 4px solid #3b82f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Botón Eliminar dentro de la lista */
+#lista-productos li button {
+    padding: 6px 12px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#lista-productos li button:hover {
+    background-color: #dc2626;
+}
+
+/* Animación sutil al agregar elementos */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
